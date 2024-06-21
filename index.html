@@ -10,18 +10,19 @@
     <div class="container">
         <h1>Grabador y Reproductor de Audio</h1>
         <button id="startRecording">Iniciar Grabación</button>
-        <button id="stopRecording">Detener Grabación</button>
-        <button id="playRecording">Reproducir Grabación</button>
+        <button id="stopRecording" disabled>Detener Grabación</button>
         <audio id="audioPlayer" controls></audio>
         <div id="audioSpectrum">
             <!-- Aquí se mostrará el espectro de frecuencias -->
         </div>
         <div id="filterButtons">
-            <button id="lowpassFilter">Filtro Pasa Bajo</button>
+            <button id="frequencySpectrum">Espectro de Frecuencias</button>
             <button id="highpassFilter">Filtro Pasa Alto</button>
+            <button id="lowpassFilter">Filtro Pasa Bajo</button>
             <button id="bandpassFilter">Filtro Pasa Banda</button>
         </div>
     </div>
     <script src="script.js"></script>
 </body>
 </html>
+
