@@ -20,16 +20,13 @@ function stopRecording() {
 function playRecording() {
     const blob = new Blob(recordedChunks, { type: 'audio/wav' });
     const audioURL = URL.createObjectURL(blob);
-    audioPlayer.src = audioURL;
+    audioPlayer.src = audioURL;  // Establecer el src del elemento audio
 }
 
 // Event Listeners para los botones
 document.getElementById('startRecording').addEventListener('click', startRecording);
 document.getElementById('stopRecording').addEventListener('click', stopRecording);
-document.getElementById('audioPlayer').addEventListener('ended', () => {
-    // Limpiar la grabación después de que se termine de reproducir
-    audioPlayer.src = '';
-});
+document.getElementById('playRecording').addEventListener('click', playRecording);
 
 // Código para los filtros (ejemplo de manejo en JavaScript)
 document.getElementById('lowpassFilter').addEventListener('click', () => {
