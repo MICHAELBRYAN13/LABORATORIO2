@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grabador de Audio</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Grabador de Audio</h1>
+        <button id="startRecording">Iniciar Grabación</button>
+        <button id="stopRecording">Detener Grabación</button>
+        <button id="playRecording">Reproducir Grabación</button>
+        <div id="audioSpectrum">
+            <!-- Aquí se mostrará el espectro de frecuencias -->
+        </div>
+        <div id="filterButtons">
+            <button id="lowpassFilter">Filtro Pasa Bajo</button>
+            <button id="highpassFilter">Filtro Pasa Alto</button>
+            <button id="bandpassFilter">Filtro Pasa Banda</button>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
