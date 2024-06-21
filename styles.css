@@ -20,6 +20,11 @@ button {
     cursor: pointer;
 }
 
+#audioPlayer {
+    margin-top: 20px;
+    width: 100%;
+}
+
 #audioSpectrum {
     margin-top: 20px;
 }
@@ -27,3 +32,4 @@ button {
 #filterButtons {
     margin-top: 20px;
 }
+
