@@ -3,29 +3,40 @@ let audioContext;
 let recorder;
 let recordedChunks = [];
 
-// Función para inicializar el grabador
-async function startRecording() {
-    audioContext = new (window.AudioContext || window.webkitAudioContext)();
+//Cuando se hace clic en "Comenzar a Grabar"
+startRecordingButton.addEventListener('click', async () => {
+  try {
     const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
-    recorder = new MediaRecorder(stream);
-    recorder.ondataavailable = event => recordedChunks.push(event.data);
-}
 
-// Función para detener la grabación
-function stopRecording() {
-    recorder.stop();
-}
+    mediaRecorder = new MediaRecorder(stream);
 
-// Función para reproducir la grabación
-function playRecording() {
-    const blob = new Blob(recordedChunks, { type: 'audio/wav' });
-    const audioURL = URL.createObjectURL(blob);
-    const audioElement = new Audio(audioURL);
-    audioElement.play();
-}
+    mediaRecorder.ondataavailable = (e) => {
+      chunks.push(e.data);
+    };
+
+    mediaRecorder.onstop = () => {
+      const blob = new Blob(chunks, { type: 'audio/wav' });
+      chunks = [];
+      const audioURL = URL.createObjectURL(blob);
+      audioPlayer.src = audioURL;
+    };
+
+    mediaRecorder.start();
+    startRecordingButton.disabled = true;
+    stopRecordingButton.disabled = false;
+  } catch (error) {
+    console.error('Error al acceder al micrófono:', error);
+  }
+});
+
+// Cuando se hace clic en "Parar de Grabar"
+stopRecordingButton.addEventListener('click', () => {
+  mediaRecorder.stop();
+  startRecordingButton.disabled = false;
+  stopRecordingButton.disabled = true;
+});
 
 // Event Listeners para los botones
-document.getElementById('startRecording').addEventListener('click', startRecording);
 document.getElementById('stopRecording').addEventListener('click', stopRecording);
 document.getElementById('playRecording').addEventListener('click', playRecording);
 
